@@ -1,0 +1,18 @@
+nav {
+  padding: 5px;
+  margin: 0px;
+  box-shadow: 1px 0px;
+  display: flex;
+
+  div.navItem a {
+    margin: 10px;
+    padding: 5px;
+    padding-left: 1px;
+    text-decoration: none;
+    color: black;
+  }
+
+  div.navItem a.active {
+    border-bottom: 3px solid black;
+  }
+}
