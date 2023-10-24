@@ -1,16 +1,17 @@
+import { NavLink } from "react-router-dom";
 import "./NavBar.scss";
-
+// 1:30:10
 function NavBar() {
   return (
     <nav>
       <div className="navItem">
-        <a href="/">Home</a>
+        <NavLink to="/">Home</NavLink>
       </div>
       <div className="navItem">
-        <a href="/Page2">Page2</a>
+        <NavLink to="/signIn">Sign In</NavLink>
       </div>
       <div className="navItem">
-        <a href="/Page3">Page3</a>
+        <NavLink to="/error">PageNotFound</NavLink>
       </div>
     </nav>
   );
