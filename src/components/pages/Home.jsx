@@ -5,7 +5,7 @@ import API from "../api/API";
 function Home() {
   // Initialisation -----------------------------
   const loggedInUserID = 1001;
-  const endpoint = `/drugs/${loggedInUserID}`;
+  const endpoint = `/prescriptions/${loggedInUserID}`;
 
   // State ----------------------------------
   const [drugs, setDrugs] = useState(null);
