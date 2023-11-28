@@ -1,3 +1,4 @@
+import Layout from "../layouts/Layout";
 function PageNotFound() {
   // Properties --------------------------------
   // Hooks -------------------------------------
@@ -5,7 +6,11 @@ function PageNotFound() {
   // Methods -----------------------------------
   // View --------------------------------------
 
-  return <h1>Page not found</h1>;
+  return (
+    <Layout>
+      <h1>Page not found</h1>
+    </Layout>
+  );
 }
 
 export default PageNotFound;

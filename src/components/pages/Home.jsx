@@ -1,11 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import Layout from "../layouts/Layout";
 import Accordion from "../UI/Accordion";
+import { LoginContext } from "../../App";
 import API from "../api/API";
 
 function Home() {
   // Initialisation -----------------------------
   const loggedInUserID = 1001;
-  const endpoint = `/prescriptions/${loggedInUserID}`;
+  const [id, setID] = useContext(LoginContext);
+
+  const endpoint = `/prescriptions/${id}`;
 
   // State ----------------------------------
   const [drugs, setDrugs] = useState(null);
@@ -26,21 +30,23 @@ function Home() {
 
   // View -----------------------------------
   return (
-    <section>
-      {!drugs ? (
-        <p>{loadingMessage}</p>
-      ) : drugs.length === 0 ? (
-        <p>No drugs Found</p>
-      ) : (
-        drugs.map((drug) => (
-          <Accordion
-            key={drug.DrugID}
-            title={drug.DrugName}
-            description={drug.DrugDosage}
-          ></Accordion>
-        ))
-      )}
-    </section>
+    <Layout>
+      <section>
+        {!drugs ? (
+          <p>{loadingMessage}</p>
+        ) : drugs.length === 0 ? (
+          <p>No drugs Found</p>
+        ) : (
+          drugs.map((drug) => (
+            <Accordion
+              key={drug.DrugID}
+              title={drug.DrugName}
+              description={drug.DrugDosage}
+            ></Accordion>
+          ))
+        )}
+      </section>
+    </Layout>
   );
 }
 

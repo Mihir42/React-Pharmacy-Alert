@@ -1,10 +1,13 @@
+import Layout from "../layouts/Layout";
 import DrugForm from "../entity/drugs/DrugForm";
 
 function AddDrug() {
   return (
     <>
-      <h1>Add a Drug</h1>
-      <DrugForm />
+      <Layout>
+        <h1>Add a Drug</h1>
+        <DrugForm />
+      </Layout>
     </>
   );
 }

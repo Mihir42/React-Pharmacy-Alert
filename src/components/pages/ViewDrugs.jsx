@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Layout from "../layouts/Layout";
 import Accordion from "../UI/Accordion";
 import API from "../api/API";
 
@@ -25,21 +26,23 @@ function ViewDrugs() {
 
   // View -----------------------------------
   return (
-    <section>
-      {!drugs ? (
-        <p>{loadingMessage}</p>
-      ) : drugs.length === 0 ? (
-        <p>No drugs Found</p>
-      ) : (
-        drugs.map((drug) => (
-          <Accordion
-            key={drug.DrugID}
-            title={drug.DrugName}
-            description={drug.DrugDosage}
-          ></Accordion>
-        ))
-      )}
-    </section>
+    <Layout>
+      <section>
+        {!drugs ? (
+          <p>{loadingMessage}</p>
+        ) : drugs.length === 0 ? (
+          <p>No drugs Found</p>
+        ) : (
+          drugs.map((drug) => (
+            <Accordion
+              key={drug.DrugID}
+              title={drug.DrugName}
+              description={drug.DrugDosage}
+            ></Accordion>
+          ))
+        )}
+      </section>
+    </Layout>
   );
 }
 
