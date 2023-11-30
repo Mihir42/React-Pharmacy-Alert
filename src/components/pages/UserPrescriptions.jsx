@@ -1,12 +1,11 @@
 import { useState, useEffect, useContext } from "react";
 import Layout from "../layouts/Layout";
-import Accordion from "../UI/Accordion";
 import { LoginContext } from "../../App";
 import API from "../api/API";
+import "../UI/Table.scss";
 
-function Home() {
+function UserPrescriptions() {
   // Initialisation -----------------------------
-  const loggedInUserID = 1001;
   const [id, setID] = useContext(LoginContext);
 
   const endpoint = `/prescriptions/${id}`;
@@ -31,23 +30,29 @@ function Home() {
   // View -----------------------------------
   return (
     <Layout>
-      <section>
+      <table>
+        <tr>
+          <th>Drug Name</th>
+          <th>Drug Dosage</th>
+          <th>Drug Symptoms</th>
+        </tr>
+
         {!drugs ? (
           <p>{loadingMessage}</p>
         ) : drugs.length === 0 ? (
           <p>No drugs Found</p>
         ) : (
           drugs.map((drug) => (
-            <Accordion
-              key={drug.DrugID}
-              title={drug.DrugName}
-              description={drug.DrugDosage}
-            ></Accordion>
+            <tr>
+              <td>{drug.DrugName}</td>
+              <td>{drug.DrugDosage}</td>
+              <td>{drug.DrugSymptoms}</td>
+            </tr>
           ))
         )}
-      </section>
+      </table>
     </Layout>
   );
 }
-
-export default Home;
+UserPrescriptions.PropTypes = {};
+export default UserPrescriptions;

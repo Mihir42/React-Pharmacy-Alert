@@ -5,6 +5,7 @@ import "./Accordion.scss";
 function Accordion(props) {
   const title = props.title;
   const description = props.description;
+  const symptoms = props.symptoms;
 
   const [isActive, setIsActive] = useState(false);
 
@@ -22,7 +23,10 @@ function Accordion(props) {
             <div>{isActive ? "-" : "+"}</div>
           </div>
           {isActive && (
-            <div className="accordion-description">{description}</div>
+            <>
+              <div className="accordion-description">{description}</div>
+              <div className="accordion-symptoms">{symptoms}</div>
+            </>
           )}
         </div>
       </div>
@@ -33,6 +37,7 @@ function Accordion(props) {
 Accordion.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
+  symptoms: PropTypes.string,
 };
 
 export default Accordion;

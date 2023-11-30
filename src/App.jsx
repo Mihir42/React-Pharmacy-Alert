@@ -1,4 +1,4 @@
-import Home from "./components/pages/Home";
+import UserPrescriptions from "./components/pages/UserPrescriptions";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginIn from "./components/pages/LoginIn";
 import PageNotFound from "./components/pages/PageNotFound";
@@ -15,7 +15,7 @@ function App() {
     <LoginContext.Provider value={[id, setID]}>
       <BrowserRouter>
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<UserPrescriptions />} />
           <Route path="/" element={<LoginIn />} />
           <Route path="/addDrug" element={<AddDrug />} />
           <Route path="/viewDrug" element={<ViewDrugs />} />
