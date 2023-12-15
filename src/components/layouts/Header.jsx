@@ -8,9 +8,7 @@ function Header() {
   // Context --------------------------------
   const loggedIn = useContext(LoginContext);
   // Methods --------------------------------
-  useEffect(() => {
-    console.log(loggedIn);
-  });
+  useEffect(() => {});
   // Views ----------------------------------
   return (
     <header>

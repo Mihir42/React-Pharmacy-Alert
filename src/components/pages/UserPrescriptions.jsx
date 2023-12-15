@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout";
 import { LoginContext } from "../../App";
 import API from "../api/API";
 import "../UI/Table.scss";
+import callFetch from "../api/API";
 
 function UserPrescriptions() {
   // Initialisation -----------------------------
@@ -17,7 +18,7 @@ function UserPrescriptions() {
   // Context --------------------------------
   // Methods --------------------------------
   const apiCall = async (endpoint) => {
-    const response = await API.get(endpoint, "GET");
+    const response = await callFetch(endpoint, "GET");
     response.isSuccess
       ? setDrugs(response.result)
       : setLoadingMessage(response.message);
@@ -54,5 +55,5 @@ function UserPrescriptions() {
     </Layout>
   );
 }
-UserPrescriptions.PropTypes = {};
+UserPrescriptions.propTypes = {};
 export default UserPrescriptions;

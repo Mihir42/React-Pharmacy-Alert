@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../../../App";
 import API from "../../api/API";
 import "./LoginForm.scss";
+import callFetch from "../../api/API";
 function LoginForm() {
   // Initialisation ------------------------------------------
 
@@ -24,7 +25,7 @@ function LoginForm() {
 
   // Methods ---------------------------------------------
   const apiCall = async (endpoint) => {
-    const response = await API.get(endpoint, "GET");
+    const response = await callFetch(endpoint, "GET");
     response.isSuccess
       ? navigate("/home")
       : setLoadingMessage(response.message);

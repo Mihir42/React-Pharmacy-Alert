@@ -1,6 +1,7 @@
 import API_URL from "./apiURL.js";
 
 export const API = {};
+
 API.get = (endpoint) => callFetch(endpoint, "GET", null);
 API.post = (endpoint, data) => callFetch(endpoint, "POST", data);
 API.put = (endpoint, data) => callFetch(endpoint, "PUT", data);
@@ -8,18 +9,18 @@ API.delete = (endpoint) => callFetch(endpoint, "DELETE", null);
 
 const callFetch = async (endpoint, method, dataObj) => {
   // Build request object
+  console.log(endpoint);
   let requestObj = { method: method }; // GET, POST, PUT, DELETE
-  if (dataObj)
-    requestObj = {
+  if (dataObj) requestObj = {
       ...requestObj,
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify(dataObj),
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify(dataObj)
     };
 
   // Call the Fetch object the return
   try {
     const endpointFullAddress = API_URL + endpoint;
-    const response = await fetch(endpointFullAddress);
+    const response = await fetch(endpointFullAddress, requestObj);
     const result = await response.json();
     return response.status >= 200 && response.status < 300
       ? { isSuccess: true, result: result }
@@ -32,4 +33,4 @@ const callFetch = async (endpoint, method, dataObj) => {
   }
 };
 
-export default API;
+export default callFetch;

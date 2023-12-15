@@ -1,7 +1,7 @@
 import Header from "./Header";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
-import propTypes from "prop-Types";
+import PropTypes from "prop-types";
 
 import "./Layout.scss";
 
@@ -15,12 +15,12 @@ function Layout(props) {
     <div className="centerpane">
       <Header />
       <NavBar />
-      <main>{props.children}</main>
+      <main> {props.children}</main>
       <Footer />
     </div>
   );
 }
 
-Layout.propTypes = { children: propTypes.element };
+Layout.propTypes = { children: PropTypes.object };
 
 export default Layout;

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Layout from "../layouts/Layout";
 import Accordion from "../UI/Accordion";
 import API from "../api/API";
+import callFetch from "../api/API";
 
 function ViewDrugs() {
   // Initialisation -----------------------------
@@ -14,7 +15,7 @@ function ViewDrugs() {
   // Context --------------------------------
   // Methods --------------------------------
   const apiCall = async (endpoint) => {
-    const response = await API.get(endpoint, "GET");
+    const response = await callFetch(endpoint, "GET");
     response.isSuccess
       ? setDrugs(response.result)
       : setLoadingMessage(response.message);
@@ -38,7 +39,15 @@ function ViewDrugs() {
               key={drug.DrugID}
               title={drug.DrugName}
               description={drug.DrugDosage}
-            ></Accordion>
+            >
+              <button type="submit" form="editForm" value="submit">
+                Edit Drug
+              </button>
+
+              <button type="submit" form="editForm" value="submit">
+                Delete Drug
+              </button>
+            </Accordion>
           ))
         )}
       </section>

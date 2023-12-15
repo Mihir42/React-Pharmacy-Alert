@@ -1,105 +1,126 @@
 import { useState } from "react";
-import PropTypes from "prop-types";
+import LargeCard from "../../UI/LargeCard.jsx";
+import FormItem from "../../UI/FormItem.jsx";
 import "./DrugForm.scss";
 
-const initialDrug = {
-  DrugName: "Flintstones gummies",
-  DrugDosage: "How many you can handle",
-  DrugSymptoms: "MAximum power",
+const emptyDrug = {
+  DrugName: "Flintstones ",
+  DrugDosage: "One before ",
+  DrugSymptoms: "Muscle ",
 };
 
-function DrugForm() {
-  // Initialisation ------------------------------------
-  const conformance = {
-    html2js: {
-      DrugName: (value) => (value === "" ? null : value),
-      DrugDosage: (value) => (value === "" ? null : value),
-      DrugSymptoms: (value) => (value === "" ? null : value),
-    },
-
-    js2html: {
-      DrugName: (value) => (value === null ? "" : value),
-      DrugDosage: (value) => (value === null ? "" : value),
-      DrugSymptoms: (value) => (value === null ? "" : value),
-    },
+function DrugForm({ onSubmit, intialdrug = emptyDrug }) {
+  // Intialisation ----------------------------------------------
+  const isValid = {
+    DrugName: (name) => name.length > 3,
+    DrugDosage: (name) => name.length > 3,
+    DrugSymptoms: (name) => name.length > 3,
   };
 
-  const apiURL = "http://localhost:5000/api";
-  const postEndpoint = `${apiURL}/drugs`;
-  // State ---------------------------------------------
-  const [drug, setDrug] = useState(initialDrug);
-
-  const apiPost = async (postEndpoint, record) => {
-    // Build request
-    const request = {
-      method: "POST",
-      body: JSON.stringify(record),
-      headers: { "Content-type": "application/json" },
-    };
-
-    // Call fetch
-    const response = await fetch(postEndpoint, request);
-    const result = await response.json();
-    return response.status >= 200 && response.status <= 300
-      ? { isSuccess: true }
-      : { isSuccess: false, message: result.message };
+  const errorMessage = {
+    DrugName: "Drug name is too short",
+    DrugDosage: "Drug dosage is too short",
+    DrugSymptoms: "Drug symptoms is too short",
   };
-  // Handlers ------------------------------------------
+
+  // State ------------------------------------------------------
+  const [drug, setDrug] = useState(intialdrug);
+  const [errors, setErrors] = useState(
+    Object.keys(intialdrug).reduce((accum, key) => ({ ...accum, [key]: null })),
+    {}
+  );
+
+  // Handlers ---------------------------------------------------
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setDrug({ ...drug, [name]: conformance.html2js[name](value) });
+    setDrug({ ...drug, [name]: value });
+    setErrors({
+      ...errors,
+      [name]: isValid[name](value) ? null : errorMessage[name],
+    });
   };
 
-  const handleSubmit = async () => {
-    console.log(`Drugs=[${JSON.stringify(drug)}]`);
-    const result = await apiPost(postEndpoint, drug);
-    result.isSuccess
-      ? console.log("Insert successful")
-      : console.log(`Insert not successfull: ${result.message}`);
+  const isValidDrug = (drug) => {
+    let isDrugValid = true;
+    Object.keys(drug).forEach((key) => {
+      if (isValid[key](drug[key])) {
+        errors[key] = null;
+      } else {
+        errors[key] = errorMessage[key];
+        isDrugValid = false;
+      }
+    });
+    return isDrugValid;
   };
-  // View ----------------------------------------------
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    isValidDrug(drug) && onSubmit(drug);
+    setErrors({ ...errors });
+  };
+  const handleCancel = () => {};
+  // View -------------------------------------------------------
   return (
-    <div className="drugForm">
-      <div className="formTray">
-        <label>
-          Drug Name
+    <LargeCard title="Create new medication">
+      <form className="borderForm">
+        <FormItem
+          label="Drug Name"
+          htmlFor="DrugName"
+          advice="Please enter the name of the drug"
+          error={errors.DrugName}
+        >
           <input
+            className="textForm"
             type="text"
-            name="drugName"
-            value={conformance.js2html["DrugName"](drug.DrugName)}
+            name="DrugName"
+            value={drug.DrugName}
             onChange={handleChange}
           />
-        </label>
-        <label>
-          Drug Dosage
-          <input
-            type="text"
-            name="drugDosage"
-            value={conformance.js2html["DrugDosage"](drug.DrugDosage)}
-            onChange={handleChange}
-          />
-        </label>
+        </FormItem>
 
-        <label>
-          Drug Symptoms
+        <FormItem
+          label="Drug Dosage"
+          htmlFor="DrugDosage"
+          advice="Please enter the dosage of the drug"
+          error={errors.DrugDosage}
+        >
           <input
+            className="textForm"
             type="text"
-            name="drugSymptoms"
-            value={conformance.js2html["DrugSymptoms"](drug.DrugSymptoms)}
+            name="DrugDosage"
+            value={drug.DrugDosage}
             onChange={handleChange}
           />
-        </label>
-      </div>
-      <button
+        </FormItem>
+
+        <FormItem
+          label="Drug Symptoms"
+          htmlFor="DrugSymptoms"
+          advice="Please enter the symptoms of the drug"
+          error={errors.DrugSymptoms}
+        >
+          <input
+            className="textForm"
+            type="text"
+            name="DrugSymptoms"
+            value={drug.DrugSymptoms}
+            onChange={handleChange}
+          />
+        </FormItem>
+
+        <button type="submit" value="cancel" onClick={handleCancel}>
+          Cancel
+        </button>
+
+        <button
         type="submit"
         form="drugForm"
         value="submit"
         onClick={handleSubmit}
-      >
-        Submit
-      </button>
-    </div>
+      >Submit</button>
+      
+      </form>
+    </LargeCard>
   );
 }
-
+//34:39
 export default DrugForm;
