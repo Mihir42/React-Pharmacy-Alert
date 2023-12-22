@@ -1,6 +1,7 @@
 import { useState } from "react";
 import LargeCard from "../../UI/LargeCard.jsx";
 import FormItem from "../../UI/FormItem.jsx";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./DrugForm.scss";
 
 const emptyDrug = {
@@ -22,6 +23,8 @@ function DrugForm({ onSubmit, intialdrug = emptyDrug, cardTitle }) {
     DrugDosage: "Drug dosage is too short",
     DrugSymptoms: "Drug symptoms is too short",
   };
+
+  const navigate = useNavigate();
 
   // State ------------------------------------------------------
   const [drug, setDrug] = useState(intialdrug);
@@ -57,6 +60,8 @@ function DrugForm({ onSubmit, intialdrug = emptyDrug, cardTitle }) {
     event.preventDefault();
     isValidDrug(drug) && onSubmit(drug);
     setErrors({ ...errors });
+    navigate("/viewDrug");
+    window.location.reload();
   };
   const handleCancel = () => {};
   // View -------------------------------------------------------
