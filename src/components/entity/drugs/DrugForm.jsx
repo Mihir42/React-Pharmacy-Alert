@@ -9,7 +9,7 @@ const emptyDrug = {
   DrugSymptoms: "Muscle ",
 };
 
-function DrugForm({ onSubmit, intialdrug = emptyDrug }) {
+function DrugForm({ onSubmit, intialdrug = emptyDrug, cardTitle }) {
   // Intialisation ----------------------------------------------
   const isValid = {
     DrugName: (name) => name.length > 3,
@@ -43,6 +43,7 @@ function DrugForm({ onSubmit, intialdrug = emptyDrug }) {
   const isValidDrug = (drug) => {
     let isDrugValid = true;
     Object.keys(drug).forEach((key) => {
+      console.log(key);
       if (isValid[key](drug[key])) {
         errors[key] = null;
       } else {
@@ -60,7 +61,7 @@ function DrugForm({ onSubmit, intialdrug = emptyDrug }) {
   const handleCancel = () => {};
   // View -------------------------------------------------------
   return (
-    <LargeCard title="Create new medication">
+    <LargeCard title={cardTitle}>
       <form className="borderForm">
         <FormItem
           label="Drug Name"
@@ -112,12 +113,13 @@ function DrugForm({ onSubmit, intialdrug = emptyDrug }) {
         </button>
 
         <button
-        type="submit"
-        form="drugForm"
-        value="submit"
-        onClick={handleSubmit}
-      >Submit</button>
-      
+          type="submit"
+          form="drugForm"
+          value="submit"
+          onClick={handleSubmit}
+        >
+          Submit
+        </button>
       </form>
     </LargeCard>
   );

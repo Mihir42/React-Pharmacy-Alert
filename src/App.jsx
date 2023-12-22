@@ -7,6 +7,7 @@ import ViewDrugs from "./components/pages/ViewDrugs";
 import { createContext, useState } from "react";
 export const LoginContext = createContext();
 import "./App.scss";
+import EditDrug from "./components/pages/EditDrug";
 
 // 1:08 :43
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/home" element={<UserPrescriptions />} />
           <Route path="/" element={<LoginIn />} />
           <Route path="/addDrug" element={<AddDrug />} />
+          <Route path="/editDrug" element={<EditDrug />} />
           <Route path="/viewDrug" element={<ViewDrugs />} />
           <Route path="/*" element={<PageNotFound />} />
         </Routes>

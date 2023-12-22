@@ -7,14 +7,13 @@ function SignIn() {
   // Hooks -------------------------------------
   // Context -----------------------------------
   // Methods -----------------------------------
-  const displayLoginForm = <LoginForm />;
   // View --------------------------------------
   return (
     <>
       <div className="centerpane">
         <Header />
-        <MediumCard title="Login below" content={displayLoginForm}>
-          <LoginForm></LoginForm>
+        <MediumCard title="Enter Login ID below">
+          <LoginForm />
         </MediumCard>
       </div>
     </>

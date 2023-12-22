@@ -1,6 +1,5 @@
 import Header from "./Header";
 import NavBar from "./NavBar";
-import Footer from "./Footer";
 import PropTypes from "prop-types";
 
 import "./Layout.scss";
@@ -16,7 +15,6 @@ function Layout(props) {
       <Header />
       <NavBar />
       <main> {props.children}</main>
-      <Footer />
     </div>
   );
 }

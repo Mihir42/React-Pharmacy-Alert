@@ -9,12 +9,12 @@ API.delete = (endpoint) => callFetch(endpoint, "DELETE", null);
 
 const callFetch = async (endpoint, method, dataObj) => {
   // Build request object
-  console.log(endpoint);
   let requestObj = { method: method }; // GET, POST, PUT, DELETE
-  if (dataObj) requestObj = {
+  if (dataObj)
+    requestObj = {
       ...requestObj,
-      headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify(dataObj)
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(dataObj),
     };
 
   // Call the Fetch object the return

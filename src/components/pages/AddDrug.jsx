@@ -12,7 +12,7 @@ function AddDrug() {
   const [loadingMessage, setLoadingMessage] = useState("Loading records ...");
 
   const getDrugs = async () => {
-    const response = await callFetch(endpoint, 'GET');
+    const response = await callFetch(endpoint, "GET");
     response.isSuccess
       ? setDrugs(response.result)
       : setLoadingMessage(response.message);
@@ -23,15 +23,13 @@ function AddDrug() {
   }, []);
 
   const handleSubmit = async (drug) => {
-    const response = await callFetch(endpoint, 'POST', drug);
-    return response.isSuccess 
-    ? getDrugs() || true 
-    : false;
+    const response = await callFetch(endpoint, "POST", drug);
+    return response.isSuccess ? getDrugs() || true : false;
   };
   return (
     <>
       <Layout>
-        <DrugForm onSubmit={handleSubmit} />
+        <DrugForm onSubmit={handleSubmit} cardTitle={"Create new Medication"} />
       </Layout>
     </>
   );

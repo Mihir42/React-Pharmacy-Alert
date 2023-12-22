@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Layout from "../layouts/Layout";
-import Accordion from "../UI/Accordion";
-import API from "../api/API";
 import callFetch from "../api/API";
+import LargeCard from "../UI/LargeCard";
+import Bar from "../UI/Bar";
 
 function ViewDrugs() {
   // Initialisation -----------------------------
   const endpoint = `/drugs`;
+  const navigate = useNavigate();
 
   // State ----------------------------------
   const [drugs, setDrugs] = useState(null);
@@ -14,6 +16,8 @@ function ViewDrugs() {
 
   // Context --------------------------------
   // Methods --------------------------------
+  const handleModify = () => {};
+
   const apiCall = async (endpoint) => {
     const response = await callFetch(endpoint, "GET");
     response.isSuccess
@@ -28,29 +32,26 @@ function ViewDrugs() {
   // View -----------------------------------
   return (
     <Layout>
-      <section>
-        {!drugs ? (
-          <p>{loadingMessage}</p>
-        ) : drugs.length === 0 ? (
-          <p>No drugs Found</p>
-        ) : (
+      <LargeCard title="Current medication stock">
+        {drugs != null ? (
           drugs.map((drug) => (
-            <Accordion
-              key={drug.DrugID}
-              title={drug.DrugName}
-              description={drug.DrugDosage}
-            >
-              <button type="submit" form="editForm" value="submit">
-                Edit Drug
-              </button>
+            <Bar key={drug.DrugID}>
+              <div className="item-one">{drug.DrugName}</div>
+              <div className="item-two">{drug.DrugDosage}</div>
+              <div className="item-three">{drug.DrugSymptoms}</div>
+              <Link to="/editDrug" state={{ from: drug }}>
+                Edit
+              </Link>
 
-              <button type="submit" form="editForm" value="submit">
-                Delete Drug
+              <button type="submit" value="Delete" onClick={null}>
+                Delete
               </button>
-            </Accordion>
+            </Bar>
           ))
+        ) : (
+          <Bar>{"Loading records unsuccessfull"}</Bar>
         )}
-      </section>
+      </LargeCard>
     </Layout>
   );
 }

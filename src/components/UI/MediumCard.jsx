@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 import "./MediumCard.scss";
 
-function MediumCard(props) {
+function MediumCard({ title, children }) {
   return (
-    <div className="card">
-      <div className="container">
-        <div className="title">{props.title}</div>
-        {props.content}
+    <div className="medium-card">
+      <div className="medium-container">
+        <div className="medium-title">{title}</div>
+        {children}
       </div>
     </div>
   );
@@ -16,5 +16,5 @@ export default MediumCard;
 
 MediumCard.propTypes = {
   title: PropTypes.string,
-  content: PropTypes.object,
+  children: PropTypes.object,
 };

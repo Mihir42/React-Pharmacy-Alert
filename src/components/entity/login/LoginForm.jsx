@@ -1,9 +1,9 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../../../App";
-import API from "../../api/API";
 import "./LoginForm.scss";
 import callFetch from "../../api/API";
+
 function LoginForm() {
   // Initialisation ------------------------------------------
 

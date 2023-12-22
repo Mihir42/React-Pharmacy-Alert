@@ -1,20 +1,23 @@
-div.card {
+div.medium-title {
+  font-size: 130%;
+  padding: 10px;
+}
+
+div.medium-card {
   box-shadow: 1px 1.5px 2px 0px rgba(0.1, 0, 0, 0.1);
-  border-radius: 10px;
+  border-radius: 1px;
   background-color: white;
   display: flex;
   justify-content: left;
-  margin-top: 40px;
-  margin-left: 265px;
   width: 800px;
   height: 300px;
+  margin-top: 40px;
+  margin-left: 265px;
+  display: flex;
+  flex-direction: column;
 }
 
-div.container {
+div.medium-container {
   padding: 2px 16px;
-}
-
-div.title {
-  font-size: 130%;
-  padding: 10px;
+  height: 100px;
 }
