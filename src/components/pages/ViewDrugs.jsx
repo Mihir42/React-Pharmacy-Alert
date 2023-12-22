@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Layout from "../layouts/Layout";
 import callFetch from "../api/API";
 import LargeCard from "../UI/LargeCard";
@@ -16,7 +16,11 @@ function ViewDrugs() {
 
   // Context --------------------------------
   // Methods --------------------------------
-  const handleModify = () => {};
+  const handleDelete = async (id) => {
+    const response = await callFetch(`${endpoint}/${id}`, "DELETE");
+    navigate("/viewDrug");
+    window.location.reload();
+  };
 
   const apiCall = async (endpoint) => {
     const response = await callFetch(endpoint, "GET");
@@ -43,13 +47,17 @@ function ViewDrugs() {
                 Edit
               </Link>
 
-              <button type="submit" value="Delete" onClick={null}>
+              <button
+                type="submit"
+                value="Delete"
+                onClick={() => handleDelete(drug.DrugID)}
+              >
                 Delete
               </button>
             </Bar>
           ))
         ) : (
-          <Bar>{"Loading records unsuccessfull"}</Bar>
+          <Bar>{"Loading records please wait"}</Bar>
         )}
       </LargeCard>
     </Layout>
