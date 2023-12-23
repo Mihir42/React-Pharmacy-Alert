@@ -1,3 +1,4 @@
+import Modal from "../UI/Modal";
 import Header from "./Header";
 import NavBar from "./NavBar";
 import PropTypes from "prop-types";

@@ -19,9 +19,10 @@ const callFetch = async (endpoint, method, dataObj) => {
 
   // Call the Fetch object the return
   try {
+    let result = null;
     const endpointFullAddress = API_URL + endpoint;
     const response = await fetch(endpointFullAddress, requestObj);
-    const result = await response.json();
+    if (response.status !== 204) result = await response.json();
     return response.status >= 200 && response.status < 300
       ? { isSuccess: true, result: result }
       : {
