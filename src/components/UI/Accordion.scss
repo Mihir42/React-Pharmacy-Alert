@@ -1,0 +1,19 @@
+div.wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: left;
+  align-items: left;
+  padding: 5px;
+}
+
+div.accordion {
+  width: 1000px;
+  padding: 10px;
+  border: 1px solid lightgrey;
+}
+
+div.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+}

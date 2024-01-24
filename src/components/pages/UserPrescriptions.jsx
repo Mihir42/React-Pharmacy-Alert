@@ -1,18 +1,18 @@
 import { useState, useEffect, useContext } from "react";
 import Layout from "../layouts/Layout";
+import Accordion from "../UI/Accordion";
 import { LoginContext } from "../../App";
-import API from "../api/API";
-import "../UI/Table.scss";
 import callFetch from "../api/API";
+import LargeCard from "../UI/LargeCard";
 
 function UserPrescriptions() {
   // Initialisation -----------------------------
   const [id, setID] = useContext(LoginContext);
 
-  const endpoint = `/prescriptions/${id}`;
+  const endpoint = `/prescriptions/patients/${id}`;
 
   // State ----------------------------------
-  const [drugs, setDrugs] = useState(null);
+  const [prescriptions, setPrescriptions] = useState(null);
   const [loadingMessage, setLoadingMessage] = useState("Loading Records ...");
 
   // Context --------------------------------
@@ -20,7 +20,7 @@ function UserPrescriptions() {
   const apiCall = async (endpoint) => {
     const response = await callFetch(endpoint, "GET");
     response.isSuccess
-      ? setDrugs(response.result)
+      ? setPrescriptions(response.result)
       : setLoadingMessage(response.message);
   };
 
@@ -31,29 +31,37 @@ function UserPrescriptions() {
   // View -----------------------------------
   return (
     <Layout>
-      <table>
-        <tr>
-          <th>Drug Name</th>
-          <th>Drug Dosage</th>
-          <th>Drug Symptoms</th>
-        </tr>
-
-        {!drugs ? (
+      <LargeCard title="Your prescriptions">
+        {!prescriptions ? (
           <p>{loadingMessage}</p>
-        ) : drugs.length === 0 ? (
+        ) : prescriptions.length === 0 ? (
           <p>No drugs Found</p>
         ) : (
-          drugs.map((drug) => (
-            <tr>
-              <td>{drug.DrugName}</td>
-              <td>{drug.DrugDosage}</td>
-              <td>{drug.DrugSymptoms}</td>
-            </tr>
+          prescriptions.map((prescription) => (
+            <Accordion
+              key={prescription.Prescription_ID}
+              Drugs_Name={[
+                prescription.Drugs_Name,
+                " ",
+                prescription.Prescriptions_Dose,
+                " ",
+                prescription.Drugs_Route,
+                " ",
+                prescription.Prescriptions_Frequency,
+                " ",
+                prescription.PrescriptionsStartDate,
+                " ",
+                prescription.PrescriptionsEndDate,
+              ]}
+              Additional_Information={
+                prescription.Prescriptions_Additional_Information
+              }
+            />
           ))
         )}
-      </table>
+      </LargeCard>
     </Layout>
   );
 }
-UserPrescriptions.propTypes = {};
+
 export default UserPrescriptions;
