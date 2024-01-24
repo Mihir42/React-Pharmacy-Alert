@@ -40,9 +40,9 @@ function ViewDrugs() {
         {drugs != null ? (
           drugs.map((drug) => (
             <Bar key={drug.DrugID}>
-              <div className="item-one">{drug.DrugName}</div>
-              <div className="item-two">{drug.DrugDosage}</div>
-              <div className="item-three">{drug.DrugSymptoms}</div>
+              <div className="item-one">{drug.Drugs_Name}</div>
+              <div className="item-two">{drug.Drugs_Route}</div>
+              <div className="item-three">{drug.Drugs_Side_Affects}</div>
               <Link to="/editDrug" state={{ from: drug }}>
                 Edit
               </Link>
@@ -50,7 +50,7 @@ function ViewDrugs() {
               <button
                 type="submit"
                 value="Delete"
-                onClick={() => handleDelete(drug.DrugID)}
+                onClick={() => handleDelete(drug.Drugs_ID)}
               >
                 Delete
               </button>

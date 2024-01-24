@@ -5,23 +5,23 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "./DrugForm.scss";
 
 const emptyDrug = {
-  DrugName: "Flintstones ",
-  DrugDosage: "One before ",
-  DrugSymptoms: "Muscle ",
+  Drugs_Name: "Flintstones gummies ",
+  Drugs_Route: "Oral ",
+  Drugs_Side_Affects: "Increase muscle mass ",
 };
 
 function DrugForm({ onSubmit, intialdrug = emptyDrug, cardTitle }) {
   // Intialisation ----------------------------------------------
   const isValid = {
-    DrugName: (name) => name.length > 3,
-    DrugDosage: (name) => name.length > 3,
-    DrugSymptoms: (name) => name.length > 3,
+    Drugs_Name: (name) => name.length > 3,
+    Drugs_Route: (name) => name.length > 3,
+    Drugs_Side_Affects: (name) => name.length > 3,
   };
 
   const errorMessage = {
-    DrugName: "Drug name is too short",
-    DrugDosage: "Drug dosage is too short",
-    DrugSymptoms: "Drug symptoms is too short",
+    Drugs_Name: "Drug name is too short",
+    Drugs_Route: "Drug dosage is too short",
+    Drugs_Side_Affects: "Drug symptoms is too short",
   };
 
   const navigate = useNavigate();
@@ -69,46 +69,46 @@ function DrugForm({ onSubmit, intialdrug = emptyDrug, cardTitle }) {
     <LargeCard title={cardTitle}>
       <form className="borderForm">
         <FormItem
-          label="Drug Name"
-          htmlFor="DrugName"
+          label="Drugs_Name"
+          htmlFor="Drugs_Name"
           advice="Please enter the name of the drug"
-          error={errors.DrugName}
+          error={errors.Drugs_Name}
         >
           <input
             className="textForm"
             type="text"
-            name="DrugName"
-            value={drug.DrugName}
+            name="Drugs_Name"
+            value={drug.Drugs_Name}
             onChange={handleChange}
           />
         </FormItem>
 
         <FormItem
-          label="Drug Dosage"
-          htmlFor="DrugDosage"
+          label="Drug Route"
+          htmlFor="Drugs_Route"
           advice="Please enter the dosage of the drug"
-          error={errors.DrugDosage}
+          error={errors.Drugs_Route}
         >
           <input
             className="textForm"
             type="text"
-            name="DrugDosage"
-            value={drug.DrugDosage}
+            name="Drugs_Route"
+            value={drug.Drugs_Route}
             onChange={handleChange}
           />
         </FormItem>
 
         <FormItem
-          label="Drug Symptoms"
-          htmlFor="DrugSymptoms"
-          advice="Please enter the symptoms of the drug"
-          error={errors.DrugSymptoms}
+          label="Drug Side Affects"
+          htmlFor="Drugs_Side_Affects"
+          advice="Please enter the side affects of the drug"
+          error={errors.Drugs_Side_Affects}
         >
           <input
             className="textForm"
             type="text"
-            name="DrugSymptoms"
-            value={drug.DrugSymptoms}
+            name="Drugs_Side_Affects"
+            value={drug.Drugs_Side_Affects}
             onChange={handleChange}
           />
         </FormItem>

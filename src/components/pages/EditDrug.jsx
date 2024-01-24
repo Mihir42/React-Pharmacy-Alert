@@ -4,31 +4,28 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Layout from "../layouts/Layout";
 import { useState } from "react";
 
-function EditDrug({ reloadDrugs }) {
+function EditDrug() {
   // Initialisation -----------------------------
   const location = useLocation();
   const navigate = useNavigate();
   const drugObj = location.state.from;
   const endpoint = "/drugs";
-  // console.log(drug); // The medication ID https://ui.dev/react-router-pass-props-to-link 17:18
   // State ----------------------------------
   const [drugs, setDrugs] = useState(drugObj);
   const drugInfo = {
-    DrugName: drugs.DrugName,
-    DrugDosage: drugs.DrugDosage,
-    DrugSymptoms: drugs.DrugSymptoms,
+    Drugs_Name: drugs.Drugs_Name,
+    Drugs_Route: drugs.Drugs_Route,
+    Drugs_Side_Affects: drugs.Drugs_Side_Affects,
   };
   console.log(drugs);
   console.log(drugInfo);
 
   // Context --------------------------------
   // Methods --------------------------------
-  const handleModify = (event) => {};
-  const handleDelete = () => {};
 
   const handleSubmit = async (drug) => {
     const response = await callFetch(
-      `${endpoint}/${drugs.DrugID}`,
+      `${endpoint}/${drugs.Drugs_ID}`,
       "PUT",
       drug
     );
