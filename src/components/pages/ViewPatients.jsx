@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout";
 import callFetch from "../api/API";
 import LargeCard from "../UI/LargeCard";
 import Bar from "../UI/Bar";
+import Card from "../UI/Card";
 
 function ViewPatients() {
   // Initialisation -----------------------------
@@ -34,12 +35,20 @@ function ViewPatients() {
       <LargeCard title="Your patients">
         {patients != null ? (
           patients.map((patient) => (
-            <Bar key={patient.PatientID}>
-              <div className="item-one">{patient.PatientFirstName}</div>
-              <div className="item-two">{patient.PatientLastName}</div>
-              <div className="item-three">{patient.PatientEmailAddress}</div>
-              <div className="item-four">{patient.PatientPhoneNumber}</div>
-            </Bar>
+            <Card key={patient.PatientID}>
+              <div className="item-one">
+                First Name: {patient.PatientFirstName}
+              </div>
+              <div className="item-two">
+                Last Name: {patient.PatientLastName}
+              </div>
+              <div className="item-three">
+                E mail address:{patient.PatientEmailAddress}
+              </div>
+              <div className="item-four">
+                Phone Number: {patient.PatientPhoneNumber}
+              </div>
+            </Card>
           ))
         ) : (
           <Bar>{"Loading records please wait"}</Bar>
