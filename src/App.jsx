@@ -8,6 +8,7 @@ import { createContext, useState } from "react";
 export const LoginContext = createContext();
 import "./App.scss";
 import EditDrug from "./components/pages/EditDrug";
+import ViewPatients from "./components/pages/viewPatients";
 
 // 1:08 :43
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/addDrug" element={<AddDrug />} />
           <Route path="/editDrug" element={<EditDrug />} />
           <Route path="/viewDrug" element={<ViewDrugs />} />
+          <Route path="/viewPatient" element={<ViewPatients />} />
           <Route path="/*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
