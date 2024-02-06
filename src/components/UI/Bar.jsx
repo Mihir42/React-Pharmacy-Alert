@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import "./Bar.scss";
 
-function Bar({ key, children, title }) {
+function Bar({ children }) {
   return (
     <div className="bar">
       <div className="bar-contents">{children}</div>

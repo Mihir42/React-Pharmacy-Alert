@@ -16,5 +16,5 @@ export default LargeCard;
 
 LargeCard.propTypes = {
   title: PropTypes.string,
-  children: PropTypes.object,
+  children: PropTypes.node,
 };
