@@ -1,19 +1,43 @@
 div.wrapper {
-  display: flex;
-  width: 100%;
-  justify-content: left;
-  align-items: left;
-  padding: 5px;
+  cursor: pointer;
+  border: 1px solid lightgrey;
+  padding: 10px 0 10px 10px;
+  margin: 10px;
 }
 
 div.accordion {
-  width: 1000px;
-  padding: 10px;
-  border: 1px solid lightgrey;
+  display: flex;
 }
 
 div.title {
-  display: flex;
-  justify-content: space-between;
-  align-items: left;
+  flex: 1;
+}
+
+div.item-1 {
+  flex: 1;
+}
+
+div.item-2 {
+  flex: 1;
+}
+
+div.item-3 {
+  flex: 1;
+}
+
+span.toggle {
+  flex: 1;
+}
+
+div.additional-information {
+  padding: 10px 0 0 0;
+  max-height: 0;
+  overflow: hidden;
+}
+
+div.additional-information-show {
+  padding: 10px 0 0 0;
+  max-height: 1;
+}
+div.basement {
 }

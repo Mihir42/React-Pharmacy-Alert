@@ -32,31 +32,20 @@ function UserPrescriptions() {
   return (
     <Layout>
       <LargeCard title="Your prescriptions">
-        {!prescriptions ? (
+        {prescriptions == null ? (
           <p>{loadingMessage}</p>
-        ) : prescriptions.length === 0 ? (
-          <p>No drugs Found</p>
         ) : (
           prescriptions.map((prescription) => (
             <Accordion
-              key={prescription.Prescription_ID}
-              Drugs_Name={[
-                prescription.Drugs_Name,
-                " ",
-                prescription.Prescriptions_Dose,
-                " ",
-                prescription.Drugs_Route,
-                " ",
-                prescription.Prescriptions_Frequency,
-                " ",
-                prescription.PrescriptionsStartDate,
-                " ",
-                prescription.PrescriptionsEndDate,
-              ]}
-              Additional_Information={
-                prescription.Prescriptions_Additional_Information
-              }
-            />
+              key={prescription.Prescriptions_ID}
+              index={prescription.Prescriptions_ID}
+              title={prescription.Drugs_Name}
+              item1={prescription.Prescriptions_Dose}
+              item2={"Start Date " + prescription.PrescriptionsStartDate}
+              item3={"End Date " + prescription.PrescriptionsEndDate}
+            >
+              {prescription.Prescriptions_Additional_Information}
+            </Accordion>
           ))
         )}
       </LargeCard>
