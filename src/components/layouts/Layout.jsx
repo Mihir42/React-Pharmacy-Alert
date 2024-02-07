@@ -13,13 +13,23 @@ function Layout(props) {
   // View --------------------------------------
   return (
     <div className="centerpane">
-      <Header />
-      <NavBar />
+      <Header
+        header1={props.header1}
+        link1={props.link1}
+        header2={props.header2}
+        link2={props.link2}
+      />
       <main> {props.children}</main>
     </div>
   );
 }
 
-Layout.propTypes = { children: PropTypes.object };
+Layout.propTypes = {
+  children: PropTypes.object,
+  header1: PropTypes.string,
+  link1: PropTypes.string,
+  header2: PropTypes.string,
+  link2: PropTypes.string,
+};
 
 export default Layout;

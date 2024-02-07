@@ -31,11 +31,3 @@ function App() {
 }
 
 export default App;
-
-/* Things to refactor 
-Use fetch api to select all patient ID to see if patient ID entered in form is correct
-Make sure login is navigating to home 
-Re design accordion to tables 
-Form video
-Refactor backend video
-*/

@@ -6,3 +6,20 @@ div.bar-contents {
   display: flex;
   justify-content: space-between;
 }
+
+a.editlink {
+  width: 4%;
+  height: 25px;
+  font-size: 90%;
+  text-decoration: none;
+  border-radius: 10%;
+  background: #2aaa5f;
+  color: white;
+  text-align: center;
+}
+
+button {
+  border: none;
+  background: #d30404;
+  color: white;
+}
