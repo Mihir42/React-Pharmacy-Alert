@@ -18,16 +18,29 @@ function LoginForm() {
     setID(event.target.value);
   };
   const handleSubmit = (event) => {
-    apiCall(`/patients/${id}`);
-    console.log(loadingMessage);
+    if (id >= 100000 && id <= 199999) {
+      apiCallPatients(`/patients/${id}`);
+      console.log(loadingMessage);
+    } else if (id >= 300000 && id <= 399999) {
+      apiCallPharmacists(`/pharmacists/${id}`);
+      console.log(loadingMessage);
+    }
+
     event.preventDefault();
   };
 
   // Methods ---------------------------------------------
-  const apiCall = async (endpoint) => {
+  const apiCallPatients = async (endpoint) => {
     const response = await callFetch(endpoint, "GET");
     response.isSuccess
       ? navigate("/home")
+      : setLoadingMessage(response.message);
+  };
+
+  const apiCallPharmacists = async (endpoint) => {
+    const response = await callFetch(endpoint, "GET");
+    response.isSuccess
+      ? navigate(`/viewDrug`)
       : setLoadingMessage(response.message);
   };
 

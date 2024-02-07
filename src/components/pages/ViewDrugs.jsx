@@ -35,7 +35,12 @@ function ViewDrugs() {
 
   // View -----------------------------------
   return (
-    <Layout>
+    <Layout
+      header1="Drugs"
+      link1="/viewDrug"
+      header2="Add Drugs"
+      link2="/addDrug"
+    >
       <LargeCard title="Current medication stock">
         {drugs != null ? (
           drugs.map((drug) => (
@@ -43,11 +48,12 @@ function ViewDrugs() {
               <div className="item-one">{drug.Drugs_Name}</div>
               <div className="item-two">{drug.Drugs_Route}</div>
               <div className="item-three">{drug.Drugs_Side_Affects}</div>
-              <Link to="/editDrug" state={{ from: drug }}>
+              <Link className="editlink" to="/editDrug" state={{ from: drug }}>
                 Edit
               </Link>
 
               <button
+                className="deleteButton"
                 type="submit"
                 value="Delete"
                 onClick={() => handleDelete(drug.Drugs_ID)}

@@ -28,7 +28,12 @@ function AddDrug() {
   };
   return (
     <>
-      <Layout>
+      <Layout
+        header1="Drugs"
+        link1="/viewDrug"
+        header2="Add Drugs"
+        link2="/addDrug"
+      >
         <DrugForm onSubmit={handleSubmit} cardTitle={"Create new Medication"} />
       </Layout>
     </>

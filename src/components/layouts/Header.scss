@@ -20,3 +20,13 @@ header div.login {
   justify-content: flex-end;
   align-items: flex-end;
 }
+
+.link {
+  padding: 2px;
+  margin: 15px;
+  color: white;
+  text-decoration: none;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-around;
+}
