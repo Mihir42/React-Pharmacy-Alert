@@ -9,6 +9,7 @@ export const LoginContext = createContext();
 import "./App.scss";
 import EditDrug from "./components/pages/EditDrug";
 import ViewPatients from "./components/pages/viewPatients";
+import AddPrescription from "./components/pages/AddPrescription";
 
 // 1:08 :43
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/editDrug" element={<EditDrug />} />
           <Route path="/viewDrug" element={<ViewDrugs />} />
           <Route path="/viewPatient" element={<ViewPatients />} />
+          <Route path="/addPrescription" element={<AddPrescription />} />
           <Route path="/*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
