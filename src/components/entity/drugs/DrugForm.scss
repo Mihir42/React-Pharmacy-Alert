@@ -1,4 +1,30 @@
 input.textForm {
-  height: 28px;
+  height: 35px;
+  width: 400px;
+  padding: 5px;
+}
+
+form.borderForm {
+  display: flex;
+}
+
+button.submitButton {
+  padding: 8px;
   width: 300px;
+  color: white;
+  background-color: #2aaa5f;
+  border-radius: 5px;
+  position: relative;
+  margin-bottom: 10px;
+  left: 400px;
+}
+
+button.cancelButton {
+  padding: 8px;
+  width: 300px;
+  color: black;
+  left: 180px;
+  position: relative;
+  background-color: gray;
+  border-radius: 5px;
 }

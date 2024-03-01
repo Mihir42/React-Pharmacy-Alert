@@ -1,8 +1,8 @@
 div.large-card {
-  display: grid;
   border: solid lightgrey 1px;
   border-radius: 5px;
   background-color: white;
+  max-width: 100%;
 }
 
 div.large-title {

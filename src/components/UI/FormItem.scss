@@ -1,6 +1,8 @@
 div.FormItem {
   width: 100%;
-  padding: 10px 0;
+  padding: 10px 10px;
+  display: flex;
+  flex-direction: column;
 
   &.Bordered {
     margin: 10px 0;
@@ -23,7 +25,7 @@ div.FormItem {
 
   label.FormLabel {
     display: block;
-    font-weight: 600;
+    font-weight: 500;
   }
 
   p.FormAdvice {

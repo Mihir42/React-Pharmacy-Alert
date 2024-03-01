@@ -2,6 +2,7 @@ import { useState } from "react";
 import LargeCard from "../../UI/LargeCard.jsx";
 import FormItem from "../../UI/FormItem.jsx";
 import { useLocation, useNavigate } from "react-router-dom";
+import "./PrescriptionForm.scss";
 
 const emptyPrescription = {
   PrescriptionsStartDate: "01-01-2024",
@@ -86,7 +87,7 @@ function PrescriptionForm({
 
   return (
     <LargeCard title={cardTitle}>
-      <form>
+      <form className="borderFormPrescriptions">
         <FormItem
           label="PrescriptionsStartDate"
           htmlFor="PrescriptionsStartDate"

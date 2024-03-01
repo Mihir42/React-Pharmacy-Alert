@@ -1,5 +1,6 @@
 import { useState } from "react";
 import LargeCard from "../../UI/LargeCard.jsx";
+import MediumCard from "../../UI/MediumCard.jsx";
 import FormItem from "../../UI/FormItem.jsx";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./DrugForm.scss";
@@ -69,7 +70,7 @@ function DrugForm({ onSubmit, intialdrug = emptyDrug, cardTitle }) {
     <LargeCard title={cardTitle}>
       <form className="borderForm">
         <FormItem
-          label="Drugs_Name"
+          label="Drug Name"
           htmlFor="Drugs_Name"
           advice="Please enter the name of the drug"
           error={errors.Drugs_Name}
@@ -112,20 +113,24 @@ function DrugForm({ onSubmit, intialdrug = emptyDrug, cardTitle }) {
             onChange={handleChange}
           />
         </FormItem>
-
-        <button type="submit" value="cancel" onClick={handleCancel}>
-          Cancel
-        </button>
-
-        <button
-          type="submit"
-          form="drugForm"
-          value="submit"
-          onClick={handleSubmit}
-        >
-          Submit
-        </button>
       </form>
+      <button
+        className="cancelButton"
+        type="submit"
+        value="cancel"
+        onClick={handleCancel}
+      >
+        Cancel
+      </button>
+      <button
+        className="submitButton"
+        type="submit"
+        form="drugForm"
+        value="submit"
+        onClick={handleSubmit}
+      >
+        Submit
+      </button>
     </LargeCard>
   );
 }
