@@ -17,6 +17,9 @@ function Header(props) {
       <NavLink className="link" to={props.link2}>
         {props.header2}
       </NavLink>
+      <NavLink className="link" to={props.link3}>
+        {props.header3}
+      </NavLink>
     </header>
   );
 }
@@ -26,6 +29,8 @@ Header.propTypes = {
   link1: PropTypes.string,
   header2: PropTypes.string,
   link2: PropTypes.string,
+  header3: PropTypes.string,
+  link3: PropTypes.string,
 };
 
 export default Header;

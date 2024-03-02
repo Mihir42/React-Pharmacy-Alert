@@ -1,6 +1,33 @@
 form.borderFormPrescriptions {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
-  flex-wrap: inherit;
-  background-color: blue;
+}
+
+form.borderFormPrescriptions > div.FormItem {
+  flex: 0 0 auto;
+  margin-right: 2px;
+  width: 33%;
+}
+
+button.prescriptionSubmitButton {
+  padding: 8px;
+  width: 300px;
+  color: white;
+  border-radius: 5px;
+  position: relative;
+  bottom: 34px;
+  left: 700px;
+  background-color: #2aaa5f;
+}
+
+button.prescriptionCancelButton {
+  padding: 8px;
+  width: 300px;
+  margin-top: 10px;
+  color: black;
+  left: 180px;
+  position: relative;
+  background-color: gray;
+  border-radius: 5px;
 }

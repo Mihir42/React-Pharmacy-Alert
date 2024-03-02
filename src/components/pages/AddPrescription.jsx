@@ -27,7 +27,12 @@ function AddPrescription() {
     return response.isSuccess ? getPrescriptions() || true : false;
   };
   return (
-    <Layout>
+    <Layout
+      header1="Drugs"
+      link1="/viewDrug"
+      header2="Add Drugs"
+      link2="/addDrug"
+    >
       <PrescriptionForm onSubmit={handleSubmit} cardTitle="Add prescription" />
     </Layout>
   );

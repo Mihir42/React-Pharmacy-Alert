@@ -192,20 +192,26 @@ function PrescriptionForm({
             onChange={handleChange}
           />
         </FormItem>
-
-        <button type="submit" value="cancel" onClick={handleCancel}>
-          Cancel
-        </button>
-
-        <button
-          type="submit"
-          form="prescriptionForm"
-          value="submit"
-          onClick={handleSubmit}
-        >
-          Submit
-        </button>
       </form>
+
+      <button
+        className="prescriptionCancelButton"
+        type="submit"
+        value="cancel"
+        onClick={handleCancel}
+      >
+        Cancel
+      </button>
+
+      <button
+        className="prescriptionSubmitButton"
+        type="submit"
+        form="prescriptionForm"
+        value="submit"
+        onClick={handleSubmit}
+      >
+        Submit
+      </button>
     </LargeCard>
   );
 }
