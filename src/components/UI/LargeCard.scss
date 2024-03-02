@@ -2,7 +2,11 @@ div.large-card {
   border: solid lightgrey 1px;
   border-radius: 5px;
   background-color: white;
-  max-width: 100%;
+}
+
+div.large-container {
+  max-width: 1250px;
+  display: grid;
 }
 
 div.large-title {

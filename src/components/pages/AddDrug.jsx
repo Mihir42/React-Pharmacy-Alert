@@ -33,6 +33,8 @@ function AddDrug() {
         link1="/viewDrug"
         header2="Add Drugs"
         link2="/addDrug"
+        header3="Add Prescriptions"
+        link3="/addPrescription"
       >
         <DrugForm onSubmit={handleSubmit} cardTitle={"Create new Medication"} />
       </Layout>

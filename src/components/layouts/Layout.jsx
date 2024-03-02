@@ -18,6 +18,8 @@ function Layout(props) {
         link1={props.link1}
         header2={props.header2}
         link2={props.link2}
+        header3={props.header3}
+        link3={props.link3}
       />
       <main> {props.children}</main>
     </div>
@@ -30,6 +32,8 @@ Layout.propTypes = {
   link1: PropTypes.string,
   header2: PropTypes.string,
   link2: PropTypes.string,
+  header3: PropTypes.string,
+  link3: PropTypes.string,
 };
 
 export default Layout;
