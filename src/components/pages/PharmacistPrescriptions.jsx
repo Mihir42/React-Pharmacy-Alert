@@ -1,18 +1,16 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useState } from "react";
 import Layout from "../layouts/Layout";
-import Accordion from "../UI/Accordion";
-import { LoginContext } from "../../App";
-import callFetch from "../api/API";
 import LargeCard from "../UI/LargeCard";
+import Accordion from "../UI/Accordion";
+import callFetch from "../api/API";
 
-function UserPrescriptions() {
+function PharmacistPrescriptions() {
   // Initialisation -----------------------------
-  const [id, setID] = useContext(LoginContext);
-  const endpoint = `/prescriptions/patients/${id}`;
+  const endpoint = "/prescriptions";
 
-  // State ----------------------------------
+  // State --------------------------------------
   const [prescriptions, setPrescriptions] = useState(null);
-  const [loadingMessage, setLoadingMessage] = useState("Loading Records ...");
+  const [loadingMessage, setLoadingMessage] = useState("Loading records...");
 
   // Context --------------------------------
   // Methods --------------------------------
@@ -29,8 +27,15 @@ function UserPrescriptions() {
 
   // View -----------------------------------
   return (
-    <Layout>
-      <LargeCard title="Your prescriptions">
+    <Layout
+      header1="Drugs"
+      link1="/viewDrug"
+      header2="Add Drugs"
+      link2="/addDrug"
+      header3="Add Prescriptions"
+      link3="/addPrescription"
+    >
+      <LargeCard title={"Patients prescriptions"}>
         {prescriptions == null ? (
           <p>{loadingMessage}</p>
         ) : (
@@ -42,7 +47,11 @@ function UserPrescriptions() {
               item1={prescription.Prescriptions_Dose}
               item2={"Start Date " + prescription.PrescriptionsStartDate}
               item3={"End Date " + prescription.PrescriptionsEndDate}
-              item4={"Frequency " + prescription.Prescriptions_Frequency}
+              item4={
+                prescription.PatientFirstName +
+                " " +
+                prescription.PatientLastName
+              }
             >
               {prescription.Prescriptions_Additional_Information}
             </Accordion>
@@ -53,4 +62,4 @@ function UserPrescriptions() {
   );
 }
 
-export default UserPrescriptions;
+export default PharmacistPrescriptions;

@@ -22,7 +22,6 @@ function AddPrescription() {
   }, []);
 
   const handleSubmit = async (prescription) => {
-    console.log("Hello hi");
     const response = await callFetch(endpoint, "POST", prescription);
     return response.isSuccess ? getPrescriptions() || true : false;
   };

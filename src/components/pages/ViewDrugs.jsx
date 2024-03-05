@@ -40,6 +40,8 @@ function ViewDrugs() {
       link1="/viewDrug"
       header2="Add Drugs"
       link2="/addDrug"
+      header3="Prescriptions"
+      link3="/viewPrescriptions"
     >
       <LargeCard title="Current medication stock">
         {drugs != null ? (

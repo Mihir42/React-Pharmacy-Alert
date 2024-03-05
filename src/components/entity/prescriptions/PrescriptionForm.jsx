@@ -80,7 +80,7 @@ function PrescriptionForm({
     event.preventDefault();
     onSubmit(prescriptions);
     setErrors({ ...errors });
-    navigate("/");
+    navigate("/viewPrescriptions");
     window.location.reload();
   };
   const handleCancel = () => {};

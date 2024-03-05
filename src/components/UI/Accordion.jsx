@@ -25,6 +25,7 @@ function Accordion(props) {
         <div className="item-1">{props.item1}</div>
         <div className="item-2">{props.item2}</div>
         <div className="item-3">{props.item3}</div>
+        <div className="item-4">{props.item4}</div>
         <span className="toggle">{selected == index ? "▼" : "◀"}</span>
       </div>
       <div
@@ -49,5 +50,6 @@ Accordion.propTypes = {
   item1: PropTypes.string,
   item2: PropTypes.string,
   item3: PropTypes.string,
+  item4: PropTypes.string,
   children: PropTypes.node,
 };
