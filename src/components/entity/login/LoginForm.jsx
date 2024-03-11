@@ -50,7 +50,7 @@ function LoginForm() {
   const apiCallGPS = async (endpoint) => {
     const response = await callFetch(endpoint, "GET");
     response.isSuccess
-      ? navigate(`/viewDrug`)
+      ? navigate(`/viewDiagnosis`)
       : setLoadingMessage(response.message);
   };
 
