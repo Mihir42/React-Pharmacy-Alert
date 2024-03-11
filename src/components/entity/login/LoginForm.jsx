@@ -24,6 +24,9 @@ function LoginForm() {
     } else if (id >= 300000 && id <= 399999) {
       apiCallPharmacists(`/pharmacists/${id}`);
       console.log(loadingMessage);
+    } else if (id >= 400000 && id <= 499999) {
+      apiCallGPS(`/gps/${id}`);
+      console.log(loadingMessage);
     }
 
     event.preventDefault();
@@ -38,6 +41,13 @@ function LoginForm() {
   };
 
   const apiCallPharmacists = async (endpoint) => {
+    const response = await callFetch(endpoint, "GET");
+    response.isSuccess
+      ? navigate(`/viewDrug`)
+      : setLoadingMessage(response.message);
+  };
+
+  const apiCallGPS = async (endpoint) => {
     const response = await callFetch(endpoint, "GET");
     response.isSuccess
       ? navigate(`/viewDrug`)
