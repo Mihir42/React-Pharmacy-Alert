@@ -12,6 +12,7 @@ import ViewPatients from "./components/pages/viewPatients";
 import AddPrescription from "./components/pages/AddPrescription";
 import PharmacistPrescriptions from "./components/pages/PharmacistPrescriptions";
 import ViewDiagnosis from "./components/pages/ViewDiagnosis";
+import PatientDetails from "./components/pages/PatientDetails";
 
 // 1:08 :43
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/viewPatient" element={<ViewPatients />} />
           <Route path="/addPrescription" element={<AddPrescription />} />
           <Route path="viewDiagnosis" element={<ViewDiagnosis />} />
+          <Route path="/patientDetails" element={<PatientDetails />} />
           <Route
             path="/viewPrescriptions"
             element={<PharmacistPrescriptions />}

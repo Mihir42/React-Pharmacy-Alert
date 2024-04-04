@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
 import Layout from "../layouts/Layout";
 import callFetch from "../api/API";
+import { Navigate, useNavigate } from "react-router-dom";
 import LargeCard from "../UI/LargeCard";
 import Bar from "../UI/Bar";
 import Card from "../UI/Card";
@@ -18,6 +18,10 @@ function ViewPatients() {
   // Context --------------------------------
   // Methods --------------------------------
 
+  const handleNavigate = (patient) => {
+    navigate("/patientDetails", { state: { patient } });
+  };
+
   const apiCall = async (endpoint) => {
     const response = await callFetch(endpoint, "GET");
     response.isSuccess
@@ -33,26 +37,27 @@ function ViewPatients() {
   return (
     <Layout>
       <LargeCard title="Your patients">
-        {patients != null ? (
-          patients.map((patient) => (
-            <Card key={patient.PatientID}>
-              <div className="item-one">
-                First Name: {patient.PatientFirstName}
-              </div>
-              <div className="item-two">
-                Last Name: {patient.PatientLastName}
-              </div>
-              <div className="item-three">
-                E mail address:{patient.PatientEmailAddress}
-              </div>
-              <div className="item-four">
-                Phone Number: {patient.PatientPhoneNumber}
-              </div>
-            </Card>
-          ))
-        ) : (
-          <Bar>{"Loading records please wait"}</Bar>
-        )}
+        <div className="border-patients">
+          {patients != null ? (
+            patients.map((patient) => (
+              <Card key={patient.PatientID}>
+                <img className="patient-image" src={patient.PatientImage}></img>
+                <div className="line-1">
+                  {patient.PatientFirstName} {patient.PatientLastName}
+                </div>
+                <div className="line-2">{patient.PatientPhoneNumber}</div>
+                <button
+                  className="patient-button"
+                  onClick={() => handleNavigate(patient)}
+                >
+                  Click for more info
+                </button>
+              </Card>
+            ))
+          ) : (
+            <Bar>{"Loading records please wait"}</Bar>
+          )}
+        </div>
       </LargeCard>
     </Layout>
   );

@@ -12,6 +12,5 @@ function Bar({ children }) {
 export default Bar;
 
 Bar.propTypes = {
-  key: PropTypes.Integer,
   children: PropTypes.node,
 };
