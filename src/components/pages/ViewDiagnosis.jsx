@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import LargeCard from "../UI/LargeCard";
 import Layout from "../layouts/Layout";
 import { LoginContext } from "../../App";
@@ -9,6 +10,7 @@ function ViewDiagnosis() {
   // Intialisation ------------------------------------
   const [id, setID] = useState(LoginContext);
   const endpoint = `/diagnosis`;
+  const navigate = useNavigate();
 
   // State --------------------------------------------
   const [diagnosis, setDiagnosis] = useState(null);
@@ -16,6 +18,10 @@ function ViewDiagnosis() {
 
   // Context ------------------------------------------
   // Methods ------------------------------------------
+
+  const handleNavigateDiagnosis = () => {
+    navigate("/addDiagnosis");
+  };
   const apiCall = async (endpoint) => {
     const response = await callFetch(endpoint, "GET");
     response.isSuccess
@@ -29,8 +35,16 @@ function ViewDiagnosis() {
 
   // View ---------------------------------------------
   return (
-    <Layout>
+    <Layout
+      header1="Diagnosis"
+      link1="/viewDiagnosis"
+      header2="Appointments"
+      link2="/viewPatientAppointments"
+    >
       <LargeCard title="Diagnosis">
+        <button className="add-appointment" onClick={handleNavigateDiagnosis}>
+          Add diagnosis
+        </button>
         {diagnosis == null ? (
           <p>{loadingMessage}</p>
         ) : (

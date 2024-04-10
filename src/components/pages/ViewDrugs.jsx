@@ -50,18 +50,26 @@ function ViewDrugs() {
               <div className="item-one">{drug.Drugs_Name}</div>
               <div className="item-two">{drug.Drugs_Route}</div>
               <div className="item-three">{drug.Drugs_Side_Affects}</div>
-              <Link className="editlink" to="/editDrug" state={{ from: drug }}>
-                Edit
-              </Link>
+              <div className="item-four">
+                <Link
+                  className="editlink"
+                  to="/editDrug"
+                  state={{ from: drug }}
+                >
+                  Edit
+                </Link>
+              </div>
 
-              <button
-                className="deleteButton"
-                type="submit"
-                value="Delete"
-                onClick={() => handleDelete(drug.Drugs_ID)}
-              >
-                Delete
-              </button>
+              <div className="item-five">
+                <button
+                  className="deleteButton"
+                  type="submit"
+                  value="Delete"
+                  onClick={() => handleDelete(drug.Drugs_ID)}
+                >
+                  Delete
+                </button>
+              </div>
             </Bar>
           ))
         ) : (
