@@ -7,7 +7,32 @@ div.bar-contents {
   justify-content: space-between;
 }
 
+div.item-one {
+  flex: 1;
+}
+
+div.item-two {
+  flex: 1;
+}
+
+div.item-three {
+  flex: 3;
+}
+
+div.item-four {
+  flex: 0.3;
+}
+
+div.item-five {
+  flex: 0.4;
+}
+
+div.item-six {
+  flex: 1;
+}
+
 a.editlink {
+  padding: 5px;
   width: 4%;
   height: 25px;
   font-size: 90%;
@@ -19,6 +44,8 @@ a.editlink {
 }
 
 button {
+  padding: 5px;
+  border-radius: 2px;
   border: none;
   background: #d30404;
   color: white;

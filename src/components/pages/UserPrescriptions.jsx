@@ -29,7 +29,12 @@ function UserPrescriptions() {
 
   // View -----------------------------------
   return (
-    <Layout>
+    <Layout
+      header1="Prescriptions"
+      link1="/home"
+      header2="Appointments"
+      link2="/viewPatientAppointments"
+    >
       <LargeCard title="Your prescriptions">
         {prescriptions == null ? (
           <p>{loadingMessage}</p>

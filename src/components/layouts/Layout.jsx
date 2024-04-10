@@ -27,7 +27,7 @@ function Layout(props) {
 }
 
 Layout.propTypes = {
-  children: PropTypes.object,
+  children: PropTypes.node,
   header1: PropTypes.string,
   link1: PropTypes.string,
   header2: PropTypes.string,

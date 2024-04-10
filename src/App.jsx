@@ -13,6 +13,9 @@ import AddPrescription from "./components/pages/AddPrescription";
 import PharmacistPrescriptions from "./components/pages/PharmacistPrescriptions";
 import ViewDiagnosis from "./components/pages/ViewDiagnosis";
 import PatientDetails from "./components/pages/PatientDetails";
+import ViewPatientAppointments from "./components/pages/ViewPatientAppointments";
+import AddAppointment from "./components/pages/AddAppointment";
+import AddDiagnosis from "./components/pages/AddDiagnosis";
 
 // 1:08 :43
 function App() {
@@ -34,6 +37,12 @@ function App() {
             path="/viewPrescriptions"
             element={<PharmacistPrescriptions />}
           />
+          <Route
+            path="viewPatientAppointments"
+            element={<ViewPatientAppointments />}
+          />
+          <Route path="/bookAppointments" element={<AddAppointment />} />
+          <Route path="/addDiagnosis" element={<AddDiagnosis />} />
           <Route path="/*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
