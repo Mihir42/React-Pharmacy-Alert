@@ -1,0 +1,38 @@
+form.borderFormDiagnosis {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-bottom: 50px;
+}
+
+form.borderFormDiagnosis > div.FormItem {
+  flex: 0 0 auto;
+  margin-right: 2px;
+  width: 33%;
+}
+
+button.bookAppointmentSubmitButton {
+  padding: 8px;
+  width: 300px;
+  height: 35px;
+  color: white;
+  border-radius: 5px;
+  position: relative;
+  top: 120px;
+  left: 380px;
+  background-color: #2aaa5f;
+}
+
+button.bookAppointmentCancelButton {
+  padding: 8px;
+  width: 300px;
+  position: relative;
+  top: 70px;
+  right: 480px;
+  height: 35px;
+  margin-top: 50px;
+  color: black;
+  position: relative;
+  background-color: gray;
+  border-radius: 5px;
+}

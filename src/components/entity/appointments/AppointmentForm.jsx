@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import FormItem from "../../UI/FormItem";
+import "./AppointmentForm.scss";
 
 const emptyAppointment = {
   Appointment_Name: "Appointment 1",
@@ -131,6 +132,14 @@ function AppointmentForm({
         onClick={handleSubmit}
       >
         Submit
+      </button>
+
+      <button
+        className="bookAppointmentCancelButton"
+        type="submit"
+        form="borderFormAppointments"
+      >
+        Cancel
       </button>
     </form>
   );
