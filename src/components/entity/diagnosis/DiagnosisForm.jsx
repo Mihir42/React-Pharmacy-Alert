@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import FormItem from "../../UI/FormItem";
+import "./DiagnosisForm.scss";
 
 const emptyDiagnosis = {
   Diagnosis_Title: "Diagnosis title",
@@ -133,6 +134,14 @@ function DiagnosisForm({
         onClick={handleSubmit}
       >
         Submit
+      </button>
+
+      <button
+        className="bookAppointmentCancelButton"
+        type="submit"
+        form="borderFormAppointments"
+      >
+        Cancel
       </button>
     </form>
   );
